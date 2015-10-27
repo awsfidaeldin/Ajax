@@ -19,23 +19,24 @@ $(document).ready(function() {
 
 	var url = 'http://api.bing.net/qson.aspx?Query='
 
-	// Now, we need to append the actual query string to it
+	// Need to append the actual query string to it
 
 	var query = $('input').val();
 
 	url = url + query + '&JsonType=callback&JsonCallback=?';
 
-	// Now that the URL has been constructed, we need to encode it for a URI.
+	// URL has been constructed, we need to encode it for a URI.
 
 	url = encodeURI(url);
 
 	$.ajax({
 		type:'GET',
 		url: url,
-		dataType: 'jsonp',
+		dataType: 'jsonp'
+		// response, responseString, jqXHR
 	}).done(function(response, responseString, jqXHR){
 		console.log(response);
-  		render(response.results);
+  		render(response);
 	});
 }
 
@@ -47,13 +48,14 @@ function render(sites) {
 	results.empty();
     $.each(sites, function(index,site){
 
-    $('#results').append(createSitesHtml(site));
+    results.append(createSitesHTML(site));
 
   });
 }
 
 
 function createSitesHTML(site) {
+
 	var siteString = '<div class="link">' + site.Text + '</div>';
 	}
 
