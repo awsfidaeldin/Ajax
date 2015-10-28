@@ -36,7 +36,7 @@ $(document).ready(function() {
 		// response, responseString, jqXHR
 	}).done(function(response, responseString, jqXHR){
 		console.log(response);
-  		render(response);
+  		render(response.SearchSuggestion.Section);
 	});
 }
 
@@ -56,7 +56,9 @@ function render(sites) {
 
 function createSitesHTML(site) {
 
-	var siteString = '<div class="link">' + site.Text + '</div>';
+	var siteString = '<a class="link" href="http://www.bing.com/search?q=' + site.Text + '">' + site.Text + '</a>';
+	return $(siteString);
+
 	}
 
 
