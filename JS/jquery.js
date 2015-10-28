@@ -12,8 +12,6 @@ $(document).ready(function() {
 
  function getResults(query) {
 
-	var pageLimit = 30;
-	
 	// Base URL
 	// http://api.bing.net/qson.aspx?Query=INSERT_QUERY_HERE&JsonType=callback&JsonCallback=?
 
@@ -53,13 +51,9 @@ function render(sites) {
   });
 }
 
-
+	// Creating the string of the target links in siteString.
 function createSitesHTML(site) {
-
-	var siteString = '<a class="link" href="http://www.bing.com/search?q=' + site.Text + '">' + site.Text + '</a>';
+	var siteString = '<a class="link" href="http://www.bing.com/search?q=' + site.Text + '"target = "_blank">' + site.Text + '</a>';
 	return $(siteString);
-
 	}
-
-
 });
